@@ -1,0 +1,107 @@
+/* ============================================================
+   Colaberry · Unified site navigation (.snav)
+   One nav, identical on every page (React + static). Self-contained:
+   any page links this file and renders the .snav markup (via the
+   SiteNav React component or site-chrome.js). Tokens only.
+   ============================================================ */
+
+/* Anthropic co-brand tokens (also set in partner.css; repeated so nav.css stands alone) */
+:root { --anthropic: #D97757; --anthropic-ink: #B0552F; }
+
+.snav { position: fixed; inset: 0 0 auto 0; z-index: 50;
+  background: color-mix(in srgb, var(--surface-page) 78%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out); }
+.snav[data-scrolled="true"] { border-bottom-color: var(--border-subtle);
+  background: color-mix(in srgb, var(--surface-page) 90%, transparent); }
+.snav__in { max-width: 1480px; margin: 0 auto; padding: 13px 28px; display: flex; align-items: center; gap: 20px; }
+
+/* logo */
+.snav__logo { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
+.snav__logo img { height: 28px; display: block; }
+
+/* center links */
+.snav__links { display: flex; align-items: center; gap: 2px; margin: 0 auto; }
+.snav__link { position: relative; padding: 9px 15px; border-radius: var(--radius-pill); font-size: 15px;
+  font-weight: var(--fw-medium); color: var(--text-muted); text-decoration: none; white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out); }
+.snav__link:hover { color: var(--text-strong); background: var(--surface-hover); text-decoration: none; }
+.snav__link[aria-current="page"] { color: var(--text-strong); font-weight: var(--fw-bold); }
+.snav__link[aria-current="page"]::after { content: ""; position: absolute; left: 15px; right: 15px; bottom: 2px;
+  height: 2px; border-radius: 2px; background: var(--red-500); }
+
+/* right cluster */
+.snav__meta { display: flex; align-items: center; gap: 12px; flex: none; }
+
+/* Anthropic partner — refined credential chip */
+.snav-partner { display: inline-flex; align-items: center; gap: 9px; padding: 5px 13px 5px 5px; border-radius: var(--radius-pill);
+  background: var(--surface-card); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs, 0 1px 2px rgba(0,0,0,.04));
+  text-decoration: none; transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+.snav-partner:hover { text-decoration: none; border-color: color-mix(in srgb, var(--anthropic) 50%, var(--border-subtle));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--anthropic) 16%, transparent); }
+.snav-partner__ic { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: var(--anthropic); color: #fff; }
+.snav-partner__tx { display: flex; flex-direction: column; line-height: 1.1; }
+.snav-partner__tx small { font-family: var(--font-mono); font-size: 9.5px; font-weight: var(--fw-bold); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--anthropic-ink); }
+.snav-partner__tx b { font-size: 13px; font-weight: var(--fw-bold); color: var(--text-strong); letter-spacing: -0.01em; }
+
+/* CTA */
+.snav__cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: var(--radius-pill);
+  background: var(--red-500); color: #fff; font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 14.5px;
+  text-decoration: none; white-space: nowrap; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.snav__cta:hover { background: var(--red-600); color: #fff; text-decoration: none; }
+.snav__cta:active { transform: translateY(1px); }
+.snav__cta .cb-i, .snav__cta svg { font-size: 1em; transition: transform var(--dur-base) var(--ease-out); }
+.snav__cta:hover .cb-i { transform: translateX(3px); }
+
+/* burger */
+.snav__burger { display: none; appearance: none; cursor: pointer; width: 44px; height: 44px; border-radius: var(--radius-md);
+  border: 1px solid var(--border-default); background: var(--surface-card); color: var(--text-strong); align-items: center; justify-content: center; }
+.snav__burger .cb-i { font-size: 23px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px) {
+  .snav__links { display: none; }
+  .snav-partner__tx { display: none; }                 /* compact to just the coral mark on tablet */
+  .snav-partner { padding: 5px; }
+  .snav__burger { display: inline-flex; }
+}
+@media (max-width: 600px) {
+  .snav__in { padding: 11px 18px; gap: 12px; }
+  .snav__cta { display: none; }                        /* CTA lives in the drawer on phones */
+  .snav-partner { display: none; }
+  .snav__logo img { height: 26px; }
+}
+
+/* ============================================================
+   Mobile drawer
+   ============================================================ */
+.snav-menu { position: fixed; inset: 0; z-index: 60; background: var(--surface-page); display: flex; flex-direction: column;
+  padding: 18px 22px 28px; transform: translateX(100%); visibility: hidden;
+  transition: transform var(--dur-slow) var(--ease-emphasized), visibility var(--dur-slow); }
+.snav-menu[data-open="true"] { transform: none; visibility: visible; }
+.snav-menu__top { display: flex; align-items: center; justify-content: space-between; padding: 4px 0 8px; }
+.snav-menu__top img { height: 26px; display: block; }
+.snav-menu__close { appearance: none; cursor: pointer; width: 44px; height: 44px; border-radius: var(--radius-md);
+  border: 1px solid var(--border-default); background: var(--surface-card); color: var(--text-strong); display: grid; place-items: center; }
+.snav-menu__close .cb-i { font-size: 24px; }
+.snav-menu__links { display: flex; flex-direction: column; margin-top: 14px; }
+.snav-menu__links a { display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-display); font-weight: var(--fw-bold); font-size: clamp(24px, 7vw, 30px); letter-spacing: -0.02em;
+  color: var(--text-strong); text-decoration: none; padding: 16px 4px; border-bottom: 1px solid var(--border-subtle); }
+.snav-menu__links a[aria-current="page"] { color: var(--red-600); }
+.snav-menu__links a .cb-i { font-size: 22px; color: var(--text-subtle); }
+.snav-menu__foot { margin-top: auto; padding-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+.snav-menu__partner { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; padding: 10px 16px 10px 10px;
+  border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid color-mix(in srgb, var(--anthropic) 30%, var(--border-subtle)); text-decoration: none; }
+.snav-menu__partner .snav-partner__ic { width: 30px; height: 30px; }
+.snav-menu__partner span { display: flex; flex-direction: column; line-height: 1.15; }
+.snav-menu__partner small { font-family: var(--font-mono); font-size: 10px; font-weight: var(--fw-bold); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--anthropic-ink); }
+.snav-menu__partner b { font-size: 14px; color: var(--text-strong); }
+.snav-menu__cta { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 17px;
+  border-radius: var(--radius-pill); background: var(--red-500); color: #fff; font-family: var(--font-display);
+  font-weight: var(--fw-bold); font-size: 17px; text-decoration: none; }
+.snav-menu__cta:hover { background: var(--red-600); color: #fff; text-decoration: none; }

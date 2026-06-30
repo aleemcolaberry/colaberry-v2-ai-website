@@ -141,10 +141,8 @@ function HomePhoto() {
   ];
   return (
     <div className="home-photo" data-rv-group>
-      <div className="home-photo__frame" data-rv>
-        <img className="home-photo__img" src="assets/photos/openhouse-cohort.png" alt="A Colaberry cohort working through an AI system design on a whiteboard" />
-        <span className="home-photo__scrim" aria-hidden="true" />
-        <div className="home-photo__body">
+      <div className="home-photo__layout">
+        <div className="home-photo__text" data-rv>
           <span className="home-photo__kick">Inside the accelerator</span>
           <h3 className="home-photo__h">Real cohorts. Real projects. Real outcomes.</h3>
           <div className="home-photo__stats">
@@ -152,6 +150,9 @@ function HomePhoto() {
               <span className="home-photo__stat" key={i}><I n={c.icon} s={15} />{c.t}</span>
             ))}
           </div>
+        </div>
+        <div className="home-photo__frame" data-rv>
+          <img className="home-photo__img" src="assets/photos/openhouse-cohort.png" alt="A Colaberry cohort working through an AI system design together" />
         </div>
       </div>
     </div>
@@ -302,7 +303,7 @@ function HomePricing() {
             <span className="home-price__num">$149</span>
             <span className="home-price__per">/ month</span>
           </div>
-          <p className="home-price__sub">Membership starts at <b>$149/month</b>. Every path begins inside the free Open House. No payment to attend.</p>
+          <p className="home-price__sub">Membership is <b>$149/month</b>. Every path begins inside the free Open House. No payment to attend.</p>
           <div className="home-price__tags">
             {tags.map((t, i) => (<span className="home-price__tag" key={i}><I n="check" s={14} />{t}</span>))}
           </div>
@@ -322,7 +323,7 @@ function HomeFinal() {
       <section className="aw-final aw-grain aw-grain--light" id="reserve">
         <img className="aw-final__mark" src="assets/logo/colaberry-mark-white.png" alt="" aria-hidden="true" />
         <div className="aw-final__inner">
-          <span className="aw-final__kicker">FREE OPEN HOUSE · LIVE ONLINE · MEMBERSHIP FROM $149/MO</span>
+          <span className="aw-final__kicker">FREE OPEN HOUSE · LIVE ONLINE · MEMBERSHIP · $149/MO</span>
           <h2 className="aw-final__h">Join the free<br />Open House.</h2>
           <p className="aw-final__p">See inside the AI Systems Architect Accelerator. Meet the Anthropic-certified team, see real projects, and find the path that fits, whether you're a professional, a career switcher, or a builder.</p>
           <span className="aw-final__btn">

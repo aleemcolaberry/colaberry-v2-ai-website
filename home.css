@@ -22,7 +22,7 @@
   opacity: .5; animation: aw-pulse 1.8s var(--ease-out) infinite; }
 
 .home-hero__h1 { font-family: var(--font-display); font-weight: var(--fw-black);
-  font-size: clamp(44px, 6.6vw, 96px); line-height: .96; letter-spacing: -0.04em; color: var(--text-strong); margin: 0 0 28px; }
+  font-size: clamp(40px, 5vw, 78px); line-height: .96; letter-spacing: -0.04em; color: var(--text-strong); margin: 0 0 28px; }
 .home-hero__h1 .is-red { color: var(--red-500); }
 .home-hero__line { display: block; overflow: hidden; }
 .home-hero__line span { display: inline-block; }
@@ -107,22 +107,23 @@
 /* ============================================================
    PHOTO BAND — real cohort
    ============================================================ */
-.home-photo { position: relative; max-width: 1440px; margin: 0 auto; padding: 0 28px 128px; }
+.home-photo { position: relative; max-width: 1380px; margin: 0 auto; padding: 0 28px clamp(72px, 7.4vw, 116px); }
+.home-photo__layout { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px, 4vw, 60px); align-items: center; }
 .home-photo__frame { position: relative; border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-subtle); }
-.home-photo__img { display: block; width: 100%; height: clamp(360px, 52vh, 560px); object-fit: cover; }
-.home-photo__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 28%, color-mix(in srgb, var(--neutral-950) 82%, transparent)); }
-.home-photo__body { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(28px, 4vw, 52px); color: #fff; }
+.home-photo__img { display: block; width: 100%; height: clamp(320px, 46vh, 480px); object-fit: cover; }
+.home-photo__text { max-width: 38ch; }
 .home-photo__kick { font-family: var(--font-mono); font-size: 12px; font-weight: var(--fw-bold); letter-spacing: .1em;
-  text-transform: uppercase; color: rgba(255,255,255,.82); }
-.home-photo__h { font-family: var(--font-display); font-weight: var(--fw-black); font-size: clamp(26px, 3.4vw, 46px);
-  letter-spacing: -0.03em; line-height: 1.04; margin: 12px 0 0; max-width: 18ch; }
-.home-photo__stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-.home-photo__stat { display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; border-radius: var(--radius-pill);
-  background: rgba(255,255,255,.12); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.2);
-  font-size: 13px; font-weight: var(--fw-medium); color: #fff; }
-.home-photo__stat .cb-i { color: var(--green-400); }
-.home-photo__stat b { font-weight: var(--fw-bold); }
+  text-transform: uppercase; color: var(--text-brand); }
+.home-photo__h { font-family: var(--font-display); font-weight: var(--fw-black); font-size: clamp(24px, 2.8vw, 40px);
+  letter-spacing: -0.03em; line-height: 1.04; margin: 14px 0 0; color: var(--text-strong); }
+.home-photo__stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.home-photo__stat { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill);
+  background: var(--surface-card); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);
+  font-size: 13px; font-weight: var(--fw-medium); color: var(--text-body); white-space: nowrap; }
+.home-photo__stat .cb-i { color: var(--green-600); }
+.home-photo__stat b { font-weight: var(--fw-bold); color: var(--text-strong); }
+@media (max-width: 1000px) { .home-photo__layout { grid-template-columns: 1fr; gap: 30px; } .home-photo__text { max-width: none; } }
 
 /* ============================================================
    LOGO WALL — graduates work at
@@ -166,7 +167,7 @@
 /* ============================================================
    PRICING strip — $149/mo
    ============================================================ */
-.home-price { max-width: 1240px; margin: 0 auto 128px; padding: 0 28px; }
+.home-price { max-width: 1180px; margin: 0 auto clamp(72px, 7.4vw, 116px); padding: 0 28px; }
 .home-price__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
   padding: clamp(34px, 4vw, 52px); border-radius: var(--radius-2xl); border: 1px solid var(--border-subtle);
   background: linear-gradient(135deg, var(--surface-card), var(--surface-subtle)); box-shadow: var(--shadow-md); }
