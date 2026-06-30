@@ -25,7 +25,7 @@ function SiteSpark({ s = 15, color = '#fff' }) {
 
 function SitePartner() {
   return (
-    <a className="snav-partner" href={SITE_HOME + '#partner'} aria-label="Colaberry is an Anthropic Partner — member of the Claude Partner Network">
+    <a className="snav-partner" href={SITE_HOME + '#partner'} aria-label="Colaberry is an Anthropic Partner, member of the Claude Partner Network">
       <span className="snav-partner__ic"><SiteSpark s={15} color="#fff" /></span>
       <span className="snav-partner__tx"><small>Member</small><b>Anthropic Partner</b></span>
     </a>

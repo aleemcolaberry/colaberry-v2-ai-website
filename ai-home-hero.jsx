@@ -23,7 +23,7 @@ function HomeRegCard() {
   React.useEffect(() => { if (window.lucide && window.lucide.createIcons) window.lucide.createIcons(); }, []);
 
   const gets = [
-    'A 90-minute live session — see it, then decide',
+    'A 90-minute live session: see it, then decide',
     'Real student projects, from idea to deployed',
     'Meet the Anthropic-certified team',
     'Find your path and your $149/mo plan',
@@ -131,7 +131,7 @@ function HomeHero() {
             <span className="home-hero__line"><span>From AI curious</span></span>
             <span className="home-hero__line"><span>to <span className="is-red">AI architect.</span></span></span>
           </h1>
-          <p className="home-hero__sub">Go from <em>using</em> AI to <strong>architecting real systems with Claude</strong> — through guided projects, a 12-week build path, and an Anthropic-certified team. One membership, three ways in.</p>
+          <p className="home-hero__sub">Go from <em>using</em> AI to <strong>architecting real systems with Claude</strong>, through guided projects, a 12-week build path, and an Anthropic-certified team. One membership, three ways in.</p>
           <div className="home-pills">
             {pills.map((p, i) => (
               <a className="home-pill" key={i} href={p.href} style={{ '--_c': p.c }}><span className="home-pill__dot" />{p.t}</a>
