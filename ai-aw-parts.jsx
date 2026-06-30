@@ -158,8 +158,8 @@ function AwStats() {
         const suffix = el.getAttribute('data-suffix') || '';
         const obj = { v: 0 };
         gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          v: target, duration: 1.05, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', once: true },
           onUpdate: () => { el.textContent = fmt(Math.round(obj.v)) + suffix; },
         });
       });

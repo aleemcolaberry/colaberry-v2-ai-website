@@ -83,8 +83,8 @@
               const els = group.querySelectorAll('[data-rv]');
               if (!els.length) return;
               gsap.from(els, {
-                y: 44, opacity: 0, duration: .85, ease: 'power3.out', stagger: .1,
-                scrollTrigger: { trigger: group, start: 'top 76%', once: true },
+                y: 22, opacity: 0, duration: .5, ease: 'power3.out', stagger: .05,
+                scrollTrigger: { trigger: group, start: 'top 88%', once: true },
               });
             });
             ScrollTrigger.refresh();

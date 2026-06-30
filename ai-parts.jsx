@@ -17,7 +17,7 @@ function Reveal({ as = 'div', className = '', style, delay = 0, children, ...res
     if (typeof IntersectionObserver === 'undefined') { setSeen(true); return; }
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { setSeen(true); io.disconnect(); } });
-    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.04, rootMargin: '0px 0px 10% 0px' });
     io.observe(el);
     return () => io.disconnect();
   }, []);

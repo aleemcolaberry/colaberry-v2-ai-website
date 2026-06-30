@@ -82,7 +82,7 @@ function BgPartner() {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!window.gsap || !window.ScrollTrigger || reduce) return;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 84%', once: true }, defaults: { ease: 'power3.out' } });
       tl.from('.bg-partband__kick', { opacity: 0, y: 18, duration: .5 })
         .from('.bg-partband h2', { opacity: 0, y: 30, duration: .7 }, '-=.25')
         .from('.bg-partband__p', { opacity: 0, y: 22, duration: .6 }, '-=.45')

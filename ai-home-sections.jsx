@@ -22,8 +22,8 @@ function HomeStats() {
         const prefix = el.getAttribute('data-prefix') || '';
         const obj = { v: 0 };
         gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          v: target, duration: 1.05, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', once: true },
           onUpdate: () => { el.textContent = prefix + fmt(Math.round(obj.v)) + suffix; },
         });
       });
@@ -172,7 +172,7 @@ function HomeCertificate() {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!window.gsap || !window.ScrollTrigger || reduce) return;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 72%', once: true }, defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 86%', once: true }, defaults: { ease: 'power3.out' } });
       tl.fromTo('.bg-cdoc', { opacity: 0, x: 64, rotation: -9, scale: .93 }, { opacity: 1, x: 0, rotation: -1.6, scale: 1, duration: .9, clearProps: 'transform' })
         .from('.bg-cdoc__seal', { scale: 0, rotation: -90, duration: .5, ease: 'back.out(2)', clearProps: 'transform' }, '-=.3');
     }, ref);
