@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Systems Architect Accelerator — Free Open House | Colaberry</title>
+<meta name="description" content="Go from using AI to architecting real systems with Claude. Colaberry's AI Systems Architect Accelerator is a membership for working professionals, career switchers, and builders — learn with Claude, build real projects, deploy in the real world. Join the free Open House. Membership starts at $149/month.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="From AI Curious to AI Architect — Free Open House">
+<meta property="og:description" content="Colaberry's AI Systems Architect Accelerator. Learn with Claude, build real systems, deploy in the real world. Membership from $149/month.">
+<meta property="og:image" content="assets/logo/export/og-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="From AI Curious to AI Architect — Free Open House">
+<meta name="twitter:description" content="Colaberry's AI Systems Architect Accelerator. Membership starts at $149/month.">
+<link rel="icon" href="assets/logo/colaberry-app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="aw.css">
+<link rel="stylesheet" href="partner.css">
+<link rel="stylesheet" href="home.css">
+</head>
+<body class="aw">
+<noscript>
+  <div style="max-width: 560px; margin: 80px auto; padding: 0 24px; font-family: Roboto, Arial, sans-serif; text-align: center;">
+    <h1 style="font-size: 28px;">From AI Curious to AI Architect</h1>
+    <p style="font-size: 17px; color: #4A4A4A;">Colaberry's AI Systems Architect Accelerator — membership starts at $149/month. This page needs JavaScript, or register directly at <a href="https://learn.colaberry.com/" style="color: #E5121D;">learn.colaberry.com</a>.</p>
+  </div>
+</noscript>
+<div id="root"></div>
+
+<template id="__bundler_thumbnail" data-bg-color="#FB2832">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FB2832"/>
+    <g transform="translate(600 340)" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="-150" cy="0" r="30"/>
+      <circle cx="150" cy="-70" r="22"/>
+      <circle cx="150" cy="70" r="22"/>
+      <path d="M-122 -12 L122 -64 M-122 12 L122 64"/>
+    </g>
+    <text x="600" y="560" font-family="Roboto, Arial, sans-serif" font-size="58" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">From AI Curious</text>
+    <text x="600" y="630" font-family="Roboto, Arial, sans-serif" font-size="58" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">To AI Architect</text>
+  </svg>
+</template>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="_ds_bundle.js"></script>
+<script>if (window.gsap && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); }</script>
+
+<script type="text/babel" src="ai-parts.jsx"></script>
+<script type="text/babel" src="ai-aw-parts.jsx"></script>
+<script type="text/babel" src="ai-aw-illos.jsx"></script>
+<script type="text/babel" src="ai-bg-partner.jsx"></script>
+<script type="text/babel" src="ai-home-hero.jsx"></script>
+<script type="text/babel" src="ai-home-sections.jsx"></script>
+<script type="text/babel">
+  // Strip any site chrome carried over from in-app (preview) navigation —
+  // no-op on a normal hard page load; prevents a duplicate nav/footer.
+  document.querySelectorAll('#siteNav, .site-mmenu, body > #site-nav, body > #site-footer').forEach((e) => e.remove());
+  document.querySelectorAll('body > .aw-footer').forEach((e) => e.remove());
+
+  const { HomeNav, HomeHero, HomeMarquee } = window;
+  const { HomeStats, HomePaths, HomeHow, HomePhoto, HomeCertificate, HomeLogos, HomeTestimonials, HomePricing, HomeFinal } = window;
+  const { BgPartner, AwFooter } = window;
+
+  function App() {
+    React.useEffect(() => {
+      const draw = () => { if (window.lucide && window.lucide.createIcons) window.lucide.createIcons(); };
+      draw();
+      const t = setInterval(draw, 400);
+      const stop = setTimeout(() => clearInterval(t), 3000);
+
+      let ctx = null, cancelVis = () => {};
+      if (window.gsap && window.ScrollTrigger) {
+        cancelVis = awWhenVisible(() => {
+          ctx = gsap.context(() => {
+            document.querySelectorAll('[data-rv-group]').forEach((group) => {
+              const els = group.querySelectorAll('[data-rv]');
+              if (!els.length) return;
+              gsap.from(els, {
+                y: 44, opacity: 0, duration: .85, ease: 'power3.out', stagger: .1,
+                scrollTrigger: { trigger: group, start: 'top 76%', once: true },
+              });
+            });
+            ScrollTrigger.refresh();
+          });
+        });
+      }
+      return () => { clearInterval(t); clearTimeout(stop); cancelVis(); if (ctx) ctx.revert(); };
+    }, []);
+
+    return (
+      <React.Fragment>
+        <a className="aw-skip" href="#main">Skip to content</a>
+        <HomeNav />
+        <main id="main">
+          <HomeHero />
+          <HomeMarquee />
+          <HomePaths />
+          <HomeStats />
+          <HomeHow />
+          <HomePhoto />
+          <BgPartner />
+          <HomeCertificate />
+          <HomeLogos />
+          <HomeTestimonials />
+          <HomePricing />
+          <HomeFinal />
+        </main>
+        <AwFooter />
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
